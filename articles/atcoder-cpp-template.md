@@ -23,6 +23,7 @@ https://github.com/antyuntyuntyun/atcoder-cpp-template
 VScode で利用することで, 設定済みの拡張機能(補完, スニペット)や  
 統合ターミナルを用いてコードテスト/提出をコマンド実行できるようになります.
 アルゴリズムを考える時間を多く捻出でき, コーディングに集中できます.
+詳細はレポジトリ内の README の確認をお願いします.
 
 ## template.cpp
 
