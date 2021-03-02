@@ -1,5 +1,5 @@
 ---
-title: "Atcoderで使えるC++テンプレート/環境"
+title: "Atcoderで使えるC++テンプレート/VScode環境"
 emoji: "📘"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["atcoder", "cpp"]
@@ -9,7 +9,7 @@ published: true
 ## Atcoder とは
 
 日本最大級の Web 上プログラムコンテスト(いわゆる競プロ)が開かれるプログラミングサイトです.  
-こちらで利用可能な C++開発テンプレート/環境を作成しました.
+こちらで利用可能な C++開発テンプレート/VScode 環境を作成しました.
 Github レポジトリは以下です.
 
 https://github.com/antyuntyuntyun/atcoder-cpp-template
@@ -34,7 +34,7 @@ VScode で利用することで, 設定済みの拡張機能(補完, スニペ�
 ```cpp
 /**
  *    author:  USERNAME
- *    created: yyyy-mm-dd hh:mm:ss
+ *    create-mm-dd hh:mm:ss
  **/
 
 #include <bits/stdc++.h>
