@@ -2,7 +2,7 @@
 title: "Atcoderで使えるC++テンプレート/VScode環境"
 emoji: "📘"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["atcoder", "cpp"]
+topics: ["atcoder", "cpp", "vscode"]
 published: true
 ---
 
