@@ -120,5 +120,6 @@ int main() {
 ## これであとは練習するだけ
 
 あとはガシガシ問題といて練習しましょう！(自戒)
-Atcoder お墨付きの有志による非公式サイトでの練習がおすすめです.
-<https://kenkoooo.com/atcoder/#/training/Boot%20camp%20for%20Beginners>
+以下の Atcoder お墨付きの有志による非公式サイトでの練習がおすすめです.
+
+https://kenkoooo.com/atcoder/#/training/Boot%20camp%20for%20Beginners
