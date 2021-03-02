@@ -6,6 +6,9 @@
 ## How to use
 
 ```bash
+# zenn-cli のインストール
+npm install zenn-cli
+
 #　記事の作成
 npx zenn new:article
 npx zenn new:article --slug 記事のスラッグ --title タイトル --type idea --emoji ✨
