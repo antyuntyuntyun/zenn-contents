@@ -9,6 +9,7 @@
   "markdown.extension.syntax.decorations": false,
   "markdown.extension.tableFormatter.enabled": false,
   "markdownlint.config": {
+    // zennではフラットなurl表記で埋め込み表示できるのでignore
     "MD034": false
   },
   "[markdown]": {
