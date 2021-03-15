@@ -29,6 +29,7 @@ VScode で利用することで, 設定済みの拡張機能(補完, スニペ�
 
 レポジトリ内でスニペット登録されているテンプレートです.
 高速化の呪文であったり, よく使う型のエイリアスだったり, 関数をインライン化したりしています.
+forkやらcloneが面倒なかたはとりあえずコピペでどうぞ.
 [template.cpp](https://github.com/antyuntyuntyun/atcoder-cpp-template/blob/main/template.cpp)
 
 ```cpp
