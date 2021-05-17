@@ -13,6 +13,7 @@ npm install zenn-cli
 npx zenn new:article
 npx zenn new:article --slug 記事のスラッグ --title タイトル --type idea --emoji ✨
 # 記事はGithubレポジトリと同期されているので, git pushにより更新されます
+# ファイル名を後から変更すると, zennで記事が複製されてしまうので, push前にファイル名変更推奨です
 
 # プレビュー開始
 npx zenn preview
