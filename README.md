@@ -9,9 +9,10 @@
 # zenn-cli のインストール
 npm install zenn-cli
 
-#　記事の作成
+# 記事の作成
 npx zenn new:article
 npx zenn new:article --slug 記事のスラッグ --title タイトル --type idea --emoji ✨
+# 記事はGithubレポジトリと同期されているので, git pushにより更新されます
 
 # プレビュー開始
 npx zenn preview
