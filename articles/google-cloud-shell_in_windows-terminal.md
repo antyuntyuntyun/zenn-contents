@@ -2,7 +2,7 @@
 title: "WindowsTerminalにGoogleCloudShellを導入"
 emoji: "🐙"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["windowsterminal", "googlecloudplat"]
+topics: ["windows", "windowsterminal", "googlecloudplat"]
 published: true
 ---
 
