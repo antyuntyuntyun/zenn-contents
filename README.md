@@ -19,3 +19,8 @@ npx zenn new:article --slug 記事のスラッグ --title タイトル --type id
 npx zenn preview
 npx zenn preview --port 3000
 ```
+
+### 記事への画像の追加
+
+下記 URL に画像をアップロードし、本文挿入用 URL を取得して利用。
+https://zenn.dev/dashboard/uploader
