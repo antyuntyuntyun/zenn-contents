@@ -99,7 +99,7 @@ gcloud auth login
 
 wsl 上に glcoud を利用した GoogleCloudShell 起動スクリプトを用意します。
 こちらのスクリプトを呼び出すことで、WindowsTerminal から GoogleCloudShell を起動できるようにします。
-私の場合は`~/WindowsTerminal/set-gcloud-env.sh`に置きましたが、任意の場所で構いません。
+今回は`~/WindowsTerminal/set-gcloud-env.sh`に置きましたが、任意の場所で構いません。
 
 ```bash: ~/WindowsTerminal/set-gcloud-env.sh
 #!/bin/sh
@@ -116,8 +116,9 @@ wsl 上に glcoud を利用した GoogleCloudShell 起動スクリプトを用�
 
 WindowsTerminal 上で Ctrl + Shift + , キーを押下することで開ける、WindowsTerminal 設定ファイルの`settings.json`を編集します。
 以下追記部分を追加することで、WindowsTerminal の起動シェル選択オプションに前章で書いたシェルスクリプト実行が選択肢として追加されます。
+前章で作成したスクリプト配置パスを変更している場合には、`"commandline"`プロパティの値内でコマンド引数で指定しているパスを適宜変更してください。
 
-```
+```json:settings.json
 {
     ...
 
