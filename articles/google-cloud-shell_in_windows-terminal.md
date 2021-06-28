@@ -117,6 +117,7 @@ wsl 上に glcoud を利用した GoogleCloudShell 起動スクリプトを用�
 WindowsTerminal 上で Ctrl + Shift + , キーを押下することで開ける、WindowsTerminal 設定ファイルの`settings.json`を編集します。
 以下追記部分を追加することで、WindowsTerminal の起動シェル選択オプションに前章で書いたシェルスクリプト実行が選択肢として追加されます。
 前章で作成したスクリプト配置パスを変更している場合には、`"commandline"`プロパティの値内でコマンド引数で指定しているパスを適宜変更してください。
+`{}`で記載されている部分は、書き換える必要がある箇所です。
 
 ```json:settings.json
 {
@@ -147,14 +148,21 @@ WindowsTerminal 上で Ctrl + Shift + , キーを押下することで開ける�
 
 ```
 
-`{guid}` は PowerShell コマンドで新規発行する必要があります。PowerShell 上で `[guid]::NewGuid()` コマンドを実行し、発行された ID を上記に記入しましょう。`{}` が含まれている状態で `"guid": "{aaa-bbb-ccc}"` のように入力する必要があるので注意してください。
-`{google-accont}` は Google アカウントを指定します。基本的には`@gmail.com`のメールアドレスになります。
-`{project name}` は既存のプロジェクト名を指定します。
-既存プロジェクトないが取り急ぎ試してみたい方は、gcloud SDK
-`gcloud projects create cloud-shell-env`コマンドを実行し、{project name} = cloud-shell-env
-となるプロジェクトを発行し、上記設定ファイルを更新しましょう。
+`{guid}` は PowerShell コマンドで新規発行する必要があります。
+PowerShell 上で `[guid]::NewGuid()` コマンドを実行し、発行された ID を上記に記入しましょう。`{}` が含まれている状態で `"guid": "{aaa-bbb-ccc}"` のように入力する必要があるので注意してください。
 
+`{google-accont}` は Google アカウントを指定します。
+基本的には`@gmail.com`のメールアドレスになります。
+
+`{project name}` は GCP 上の既存プロジェクト名を指定します。
+既存プロジェクトはないものの取り急ぎ試してみたい方は、gcloud SDK を利用してテスト用のプロジェクトを新規作成することで試せます。
+例えば、テスト用プロジェクトとして`cloud-shell-env`というプロジェクトを新規作成する場合、 `gcloud projects create cloud-shell-env`コマンドを実行します。プロジェクト作成完了後に、上記 WindowsTerminal の設定ファイルの`{project name}` を作成したテスト用プロジェクト名で置換してください。
+
+他項目の一部補足 ↓
 `name`属性は、WindowsTerminal 上で表示される名称になります。プロジェクト名など、自身が識別しやすい文字列に書き換えてください。
+他にもフォントなどがプロファイル毎に設定できます。本記事で紹介は省きますが、詳細気になる方は以下参照してください。
+
+https://docs.microsoft.com/ja-jp/windows/terminal/customize-settings/startup
 
 ## 実際に試してみる
 
