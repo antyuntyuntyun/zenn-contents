@@ -8,7 +8,7 @@ published: false
 
 ## はじめに
 
-lamnda で AWS をコスト通知させるようにしたので、備忘。
+lamda で AWS コストを通知させるようにしたので、備忘。
 Slack 通知は情報が溢れているけど Teams 通知している人をネットワークの大海で見かけませんでした。
 aws cli 使える環境じゃないという制約があったのもあり、sam は使っていません。
 
@@ -21,10 +21,9 @@ https://docs.microsoft.com/ja-jp/microsoftteams/platform/webhooks-and-connectors
 
 マネコンから lambda のページに行き、とりあえず関数を作成します。
 関数の名前は`aws_billing`等の任意の名前で作成します。
-すると、デフォルト実行ロールが作成されます。
-作成されたロールがコストを取得できるように, iam のページに行ってアタッチするポリシーを変更します。
+デフォルト実行ロールが作成されるので、作成されたロールがコストを取得できるように, iam のページに行ってアタッチするポリシーを変更します。
 
-AWS 管理の以下二つのポリシーをアクセスします。
+まず、以下二つ AWS 管理のポリシーをアタッチします。
 
 - AWSAccountUsageReportAccess
 - AWSBillingReadOnlyAccess
@@ -270,10 +269,6 @@ def post_teams(title: str, detail: str, service_billings: list) -> None:
     for item in facts_sorted_by_billing:
         del item['billing']
 
-
-    print(f'facts: {facts_sorted_by_billing}')
-
-
     payload = {
         '@type': 'MessageCard',
         "@context": "http://schema.org/extensions",
@@ -284,16 +279,6 @@ def post_teams(title: str, detail: str, service_billings: list) -> None:
             "activitySubtitle": "サービス別利用金額(金額降順)",
             "activityImage": "https://img.icons8.com/color/50/000000/amazon-web-services.png",
             "facts": facts_sorted_by_billing,
-            # "facts": [{
-            #     "name": "Assigned to",
-            #     "value": "Unassigned"
-            # }, {
-            #     "name": "Due date",
-            #     "value": "Mon May 01 2017 17:07:18 GMT-0700 (Pacific Daylight Time)"
-            # }, {
-            #     "name": "Status",
-            #     "value": "Not started"
-            # }],
             "markdown": 'true'
         }]
     }
@@ -322,4 +307,4 @@ def post_teams(title: str, detail: str, service_billings: list) -> None:
 
 ## 終わりに
 
-仕事に疲れたときに bot 作るのは良い息抜きになると思うので是非 Teams を利用している皆さんも是非お試しください。
+仕事に疲れたときに bot 作るのは良い息抜きになると思うので Teams を利用している皆さん是非お試しください。
