@@ -1,8 +1,8 @@
 ---
-title: "LamndaでAWSコストをTeamsに通知"
+title: "LamdaでAWSコストをTeamsに通知"
 emoji: "🎃"
 type: "tech" # tech: 技術記事 / idea: アイデア
-topics: ["windows", "windowsterminal", "googlecloudplat"]
+topics: ["Lambda", "Bot", "AWS", "Microsoft Teams"]
 published: true
 ---
 
