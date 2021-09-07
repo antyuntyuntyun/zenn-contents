@@ -200,7 +200,15 @@ def post_teams(title: str, detail: str, service_billings: list) -> None:
             "activitySubtitle": "サービス別利用金額(金額降順)",
             "activityImage": "https://img.icons8.com/color/50/000000/amazon-web-services.png",
             "facts": facts_sorted_by_billing,
-            "markdown": 'true'
+            "markdown": 'true',
+            "potentialAction": [{
+                "@type": "OpenUri",
+                "name": "Cost Management Console",
+                "targets": [{
+                    "os": "default",
+                    "uri": "https://console.aws.amazon.com/cost-management/home?region=ap-northeast-1#/dashboard"
+                }]
+            }]
         }]
     }
 
@@ -279,7 +287,15 @@ def post_teams(title: str, detail: str, service_billings: list) -> None:
             "activitySubtitle": "サービス別利用金額(金額降順)",
             "activityImage": "https://img.icons8.com/color/50/000000/amazon-web-services.png",
             "facts": facts_sorted_by_billing,
-            "markdown": 'true'
+            "markdown": 'true',
+            "potentialAction": [{
+                "@type": "OpenUri",
+                "name": "Cost Management Console",
+                "targets": [{
+                    "os": "default",
+                    "uri": "https://console.aws.amazon.com/cost-management/home?region=ap-northeast-1#/dashboard"
+                }]
+            }]
         }]
     }
 
