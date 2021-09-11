@@ -8,7 +8,7 @@ published: true
 
 # はじめに
 
-python から GoogleDriveAPI を叩けるようになるまでのセットアップ手順です。
+python から GoogleDriveAPI を叩けるようになるまで手順です。
 
 ## GCP コンソール上での API/サービスアカウントセットアップ
 
