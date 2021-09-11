@@ -3,7 +3,7 @@ title: "pythonからGoogleDriveAPIを叩く"
 emoji: "🐡"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: [python, googledrive]
-published: false
+published: true
 ---
 
 # はじめに
