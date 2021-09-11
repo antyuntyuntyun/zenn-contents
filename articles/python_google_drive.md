@@ -148,7 +148,7 @@ os.remove(tmp_csv_file_path)
 ### GoogleDrive 上のファイルを pd.DataFrame として読み込み
 
 ```python
-file_id = 'xxxxxxx' # 読み込みたいファイルのID。https://drive.google.com/drive/folders/xxxxxxxxxx <- ここの部分
+file_id = 'xxxxxxx' # 読み込むファイルのID。https://drive.google.com/drive/folders/xxxxxxxxxx <- ここの部分
 
 request = drive_service.files().get_media(fileId=file_id)
 fh = io.BytesIO()
@@ -163,7 +163,7 @@ return pd.read_csv(io.StringIO(fh.getvalue().decode()))
 ### 　ファイルの削除
 
 ```python
-ile_id = 'xxxxxxx' # 読み込みたいファイルのID。https://drive.google.com/drive/folders/xxxxxxxxxx <- ここの部分
+ile_id = 'xxxxxxx' # 削除するファイルのID。https://drive.google.com/drive/folders/xxxxxxxxxx <- ここの部分
 
 self.drive_service.files().delete(
     fileId=file_id
