@@ -117,6 +117,28 @@ drive_service = build('drive', 'v3', credentials=scoped_creds)
 これで準備が整いました。
 実際にお試し操作していきます。
 
+#### 認証用 JSON ファイルを環境変数として扱いたい場合
+
+コンテナイメージに認証情報を含めたくない等の理由で、認証情報を環境変数として扱いたい場合があると思います。
+その場合は。以下のようなシェルスクリプトで 1 行の文字列として環境変数に持たせることが可能です。
+
+```bash
+#!/bin/bash
+# config/credentials/以下のjsonファイルを平文にして.envに追加
+env_name='GOOGLE_SERVICE_ACCOUNT_CREDENTIAL'
+json=$(cat config/credentials/*.json | tr -d "\n")
+env_line="${env_name}=${json}"
+
+echo -e "\n" >> .env
+echo "$env_line" >> .env
+```
+
+この環境変数の文字列を一度ファイルとして保存してあげれば、前章と同様に認証できる状態になると思います。
+(ファイル化挟まなくても、json.load()経由ででうまく認証させられるはずなのですが、
+私はうまく処理できなかったので妥協してファイルに落としています。orz)
+
+https://google-auth.readthedocs.io/en/master/reference/google.oauth2.service_account.html
+
 ### pd.DataFrame をスプレッドシートとしてアップロード
 
 ```python
