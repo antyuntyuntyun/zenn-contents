@@ -96,7 +96,6 @@ credential_folder_path = 'credential_folder_path/'
 files = glob.glob(f'{credential_folder_path}/*.json')
 try:
     jsonf = files[0]
-    google_app_credential = json.load(open(jsonf, 'r'))
 except Exception as e:
     print('Error: Get Google Drive API Credential')
     raise e
