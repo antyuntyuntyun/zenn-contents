@@ -191,6 +191,55 @@ self.drive_service.files().delete(
 ).execute()
 ```
 
+### 特定フォルダ以下の yyyymm フォルダを調べて csv を dict で取得
+
+`p_folder_id`以下の yyyymm フォルダ以下の csv を取得
+
+```python
+        folder_file_dict_list = []
+
+        condition_list = [
+            f'parents in "{p_folder_id}"',
+            'trashed = false',
+            'mimeType = "application/vnd.google-apps.folder"'
+        ]
+        conditions = ' and '.join(condition_list)
+        response_folders = self.drive_service.files().list(
+            supportsAllDrives=True,
+            includeItemsFromAllDrives=True,
+            q=conditions,
+            fields="nextPageToken, files(id, name, mimeType, fullFileExtension)").execute()
+
+        for folder in response_folders.get('files', []):
+            # [フォルダ かつ 数値のみ かつ 6桁で構成される文字列]の条件でyyyymmフォルダ判定
+            if (folder.get('name').isdecimal() and len(folder.get('name')) == 6):
+                folder_id = folder.get('id')
+                condition_list = [
+                    f'parents in "{folder_id}"',
+                    'trashed = false',
+                    'mimeType = "text/csv"'
+                ]
+                conditions = ' and '.join(condition_list)
+                response_files = self.drive_service.files().list(
+                    supportsAllDrives=True,
+                    includeItemsFromAllDrives=True,
+                    q=conditions,
+                    fields="nextPageToken, files(id, name, mimeType, fullFileExtension)").execute()
+                # 取得したcsvをリストに格納
+                for file in response_files.get('files', []):
+                    # 条件指定できるmimeTypeだけでは絞りきれないので、fullFileExtensionで拡張子判定
+                    if (file.get('fullFileExtension') == 'csv'):
+                        print(f"Found folder: {folder.get('name')} ({file.get('id')})")
+                        print(f"Found file: {file.get('name')} ({file.get('id')})")
+                        folder_file_dict_list.append(
+                            {
+                                'folder_id': f'{folder.get("id")}',
+                                'folder_name': f'{folder.get("name")}',
+                                'file_id': f'{file.get("id")}'
+                                'file_name': f'{file.get("name")}'
+                            })
+```
+
 ### スプレッドシート操作
 
 (体力切れしたので割愛)
