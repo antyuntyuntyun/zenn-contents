@@ -191,7 +191,7 @@ self.drive_service.files().delete(
 ).execute()
 ```
 
-### 特定フォルダ以下の yyyymm フォルダを調べて csv を dict で取得
+### 特定フォルダ以下の yyyymm フォルダ以下を調べて、 csv を dict list で取得
 
 `p_folder_id`以下の yyyymm フォルダ以下の csv を取得
 
