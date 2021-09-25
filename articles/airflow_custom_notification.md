@@ -3,7 +3,7 @@ title: "AirFlowのDAG処理通知をTeamsに通知してみた"
 emoji: "🌊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["airflow", "microsoftteams", "bot"]
-published: false
+published: true
 ---
 
 # Airflow での処理通知を Slack でなく Teams に送りたい
