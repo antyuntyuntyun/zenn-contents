@@ -1,5 +1,5 @@
 ---
-title: "AirFlowのDAG処理通知をTeamsに通知してみた"
+title: "AirflowのDAG処理通知をTeamsに通知してみた"
 emoji: "🌊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["airflow", "microsoftteams", "bot"]
