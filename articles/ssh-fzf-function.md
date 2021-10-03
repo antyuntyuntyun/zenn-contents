@@ -9,7 +9,7 @@ published: true
 # はじめに
 
 先日、aws-cli のプロファイルを簡単に切り替えられるように fzf で自作関数を書いてシェルに登録しました。
-同じことを ssh ホストの切り替えでやりたくなったのでやってみました。
+同じようなことを ssh ホストの切り替えでやりたくなったのでやってみました。
 https://qiita.com/antyuntyuntyun/items/5976ef838ec160f6b027
 
 ## fzf
