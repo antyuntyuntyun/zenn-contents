@@ -8,15 +8,14 @@ published: true
 
 # はじめに
 
-先日、aws-cli のプロファイルを簡単に切り替えられるように fzf で自作関数を書いてシェルに登録した。
+先日、aws-cli のプロファイルを簡単に切り替えられるように fzf で自作関数を書いてシェルに登録しました。
 同じことを ssh ホストの切り替えでやりたくなったのでやってみました。
 https://qiita.com/antyuntyuntyun/items/5976ef838ec160f6b027
 
 ## fzf
 
 fzf とは、cli 上でのあいまい検索および結果選択が可能になる、GO 製の CLI ツールです。
-peco とよく比較されます。
-詳細は以下記事等参照
+peco とよく比較されます。詳細は以下記事等参照
 
 https://qiita.com/kamykn/items/aa9920f07487559c0c7e
 
