@@ -3,7 +3,7 @@ title: "fzfを用いてssh先を簡単指定"
 emoji: "🌊"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["fzf", "ssh", "cli"]
-published: false
+published: true
 ---
 
 # はじめに
