@@ -24,3 +24,15 @@ npx zenn preview --port 3000
 
 下記 URL に画像をアップロードし、本文挿入用 URL を取得して利用。
 https://zenn.dev/dashboard/uploader
+
+## slug について
+
+ファイル名 = slug となります。
+一度設定した後では変更不可なので、こだわりがある場合は最初にファイル名を考えてつけておくのが推奨です。
+
+e.g. `ssh-fzf-function.md` で書いた記事は以下 URL で公開されます。
+https://zenn.dev/antyuntyun/articles/ssh-fzf-function
+
+### slug 命名ルール
+
+slug は半角英数字（a-z0-9）、ハイフン（-）、アンダースコア（\_）の 12〜50 字の組み合わせにする必要があります
