@@ -8,15 +8,14 @@ published: true
 
 ## はじめに
 
-以下の記事に触発され Lamnda で python で CodeCommit に通知を飛ばすように実装しました。
-zip でうｐが面倒なので、python3.7 で実装しました。
-通知のための設定等細かな点にについてはこちらをご覧ください。
+以下の記事に触発され Lamnda で python で CodeCommit に通知を飛ばすように実装しました。zip でうｐが面倒なので、python3.7 で実装しました。
+通知のための設定等細かな点にについては以下の記事内容をご確認ください。
 https://qiita.com/aocm/items/8eb22939791691c19cde
 
 ## まずは Lamnda で event の中身の確認
 
-`lamnda_handler()`に渡される event の中身は object で渡されるもので、どのような形で来るかわかりまｗせん。
-まず CodeCommit の PR 関連トリガーで event にどういう形の情報が飛ばされるかを確認しました。
+`lamnda_handler()`に渡される event の中身は object で渡されるもので、どのような形で来るかわかりません。
+CodeCommit の PR 関連トリガーで event にどういう形の情報が飛ばされるかをまず確認しました。
 
 ### Sns の event 確認コード
 
@@ -175,7 +174,7 @@ def lambda_handler(event, context) -> None:
         "notificationRuleArn": "arn:aws:codestar-notifications:ap-northeast-1:aaaaa:notificationrule/aaaaa", #mask
         "detail": {
             "beforeCommitId": "1da430df4696193ce4883bd029d7fa650606a078",
-            "notificationBody": "A pull request event occurred in the following AWS CodeCommit repository: test-repository. The user: arn:aws:iam::aaaaa:user/iam_user_name made a comment or replied to a comment. The comment was made on the following Pull Request: 11. For more information, go to the AWS CodeCommit console {repogitory_link}, # mask
+            "notificationBody": "A pull request event occurred in the following AWS CodeCommit repository: test-repository. The user: arn:aws:iam::aaaaa:user/iam_user_name made a comment or replied to a comment. The comment was made on the following Pull Request: 11. For more information, go to the AWS CodeCommit console {repogitory_link}", # mask
             "repositoryId": "aaaaa", # mask
             "commentId": "aaaaa", # mask
             "afterCommitId": "c98211927b2d78bc7bad803b08221a0e0329ce20",
@@ -218,7 +217,6 @@ https://docs.microsoft.com/ja-jp/microsoftteams/platform/webhooks-and-connectors
 
 ```python
 def post_teams(title: str, detail: list, link: list) -> None:
-
     payload = {
         '@type': 'MessageCard',
         "@context": "http://schema.org/extensions",
