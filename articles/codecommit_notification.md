@@ -1,5 +1,5 @@
 ---
-title: "CodeCommitの通知をlamndaでTeamsに飛ばしてみた"
+title: "CodeCommitの通知をLambdaでTeamsに飛ばしてみた"
 emoji: "🔖"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Lambda", "CodeCommit", "Bot", "AWS", "Microsoft Teams"]
@@ -8,11 +8,11 @@ published: true
 
 ## はじめに
 
-以下の記事に触発され Lamnda で python で CodeCommit に通知を飛ばすように実装しました。zip でうｐが面倒なので、python3.7 で実装しました。
+以下の記事に触発され Lambda で python で CodeCommit に通知を飛ばすように実装しました。zip でうｐが面倒なので、python3.7 で実装しました。
 通知のための設定等細かな点にについては以下の記事内容をご確認ください。
 https://qiita.com/aocm/items/8eb22939791691c19cde
 
-## まずは Lamnda で event の中身の確認
+## まずは Lambda で event の中身の確認
 
 `lamnda_handler()`に渡される event の中身は object で渡されるもので、どのような形で来るかわかりません。
 CodeCommit の PR 関連トリガーで event にどういう形の情報が飛ばされるかをまず確認しました。
