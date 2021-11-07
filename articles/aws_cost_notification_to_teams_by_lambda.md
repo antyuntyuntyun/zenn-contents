@@ -1,5 +1,5 @@
 ---
-title: "LamdaでAWSコストをTeamsに通知"
+title: "LambdaでAWSコストをTeamsに通知"
 emoji: "🎃"
 type: "tech" # tech: 技術記事 / idea: アイデア
 topics: ["Lambda", "Bot", "AWS", "Microsoft Teams"]
@@ -8,7 +8,7 @@ published: true
 
 ## はじめに
 
-lamda で AWS コストを通知させるようにしたので、備忘。
+Lambda で AWS コストを通知させるようにしたので備忘録。
 Slack 通知は情報が溢れているけど Teams 通知している人をネットワークの大海で見かけませんでした。
 aws cli 使える環境じゃないという制約があったのもあり、sam は使っていません。
 
@@ -17,7 +17,7 @@ aws cli 使える環境じゃないという制約があったのもあり、sam
 公式ドキュメント通りにやります。WebhookURL を控えるのを忘れないようにしましょう
 https://docs.microsoft.com/ja-jp/microsoftteams/platform/webhooks-and-connectors/how-to/add-incoming-webhook
 
-### lambda にアタッチする IAM Role の作成
+### Lambda にアタッチする IAM Role の作成
 
 マネコンから lambda のページに行き、とりあえず関数を作成します。
 関数の名前は`aws_billing`等の任意の名前で作成します。
@@ -32,7 +32,7 @@ https://docs.microsoft.com/ja-jp/microsoftteams/platform/webhooks-and-connectors
 作成するポリシーは`Cost Explorer Service`の ReadOnly 権限を与えてください。
 `CostExplorerRead`等の任意の名前で保存してアタッチします。
 
-### lambda コードの記述(python)
+### Lambda コードの記述(python)
 
 クラスメソッドさんの Slack 通知用記事のコードをベースに書きました。
 https://dev.classmethod.jp/articles/notify-slack-aws-billing/
@@ -244,7 +244,7 @@ def get_today() -> str:
     return date.today().isoformat()
 ```
 
-#### lamda コードの変更点
+#### Lambda コードの変更点
 
 クラメソさんとの記事のコードとの差異としては、`post_teams()`を追加してる部分になります。
 サービス別の料金を降順表示するようにして投稿させています。
