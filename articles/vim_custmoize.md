@@ -285,6 +285,22 @@ let g:airline_symbols.whitespace = 'Ξ'
 call plug#end()
 ```
 
+### ~/.vimrc のダウンロード
+
+上記コピペか gist に挙げているので`curl`で持ってこれます。
+
+```bash
+curl -LO https://gist.githubusercontent.com/antyuntyuntyun/fc092cf1e308459ec7bcec4542169a1e/raw/32a0c5264524acfd4ec28a53a095249e8ebdc187/.vimrc
+```
+
+ホームディレクトリに直接吐き出したい場合は以下コマンドで。既存設定があった場合に上書きしないように気を付けてください。
+
+```bash
+# 既存設定ファイルがあった場合にはバックアップ。（シンボリックリンクの場合にはファイルは無視して上書きします）
+[ -e "~/.vimrc" ] && cp ~/.vimrc ~/.vimrc.bck
+curl -L https://gist.githubusercontent.com/antyuntyuntyun/fc092cf1e308459ec7bcec4542169a1e/raw/32a0c5264524acfd4ec28a53a095249e8ebdc187/.vimrc > ~/.vimrc
+```
+
 ### やりたいけどできてないこと
 
 Github CLI/ghq/fzf あたりを用いて cli 上で実現する git 便利操作を vim で実現できてない。
