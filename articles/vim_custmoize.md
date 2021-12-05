@@ -163,7 +163,6 @@ if empty(glob('~/.vim/colors/jellybeans.vim'))
     \ >/dev/null 2>&1
 endif
 colorscheme jellybeans
-" TODOハイライト設定
 let g:jellybeans_overrides = {
 \    'Todo': { 'guifg': '303030', 'guibg': 'f0f000',
 \              'ctermfg': 'Black', 'ctermbg': 'Yellow',
@@ -174,24 +173,55 @@ let g:jellybeans_overrides = {
 set encoding=utf-8
 set fileencodings=utf-8,cp932
 set autoread
+" set paste
+" set paste しているとinoremapが効かないのでコメントアウト
+
+" row number
 set number
+" 行頭以外のtab表示幅
 set tabstop=4
+" 行頭でのtab表示幅
 set shiftwidth=4
+"set autoindent
 set smartindent
 syntax enable
+
 set hlsearch
 set incsearch
 set ignorecase
 set smartcase
 set wrapscan
+
+set smartindent
 set wildmenu
 set history=5000
-" 不可視文字(e.g. \t)の表示設定
+""ファイル名表示
+" set statusline=%F
+" 変更チェック表示
+" set statusline+=%m
+" 読み込み専用かどうか表示
+" set statusline+=%r
+" " ヘルプページなら[HELP]と表示
+" set statusline+=%h
+" " プレビューウインドウなら[Preview]と表示
+" set statusline+=%w
+" " これ以降は右寄せ表示
+" set statusline+=%=
+" " file encoding
+" set statusline+=[enc=%{&fileencoding}]
+" " 現在行数/全行数
+" set statusline+=[row=%l/%L]
+" " 現在列数
+" set statusline+=[col=%c]
+""ステータスラインを常に表示(0:表示しない、1:2つ以上ウィンドウがある時だけ表示)
+" set laststatus=2
+" 不可視文字を可視化(タブが「▸-」と表示される)
 set list listchars=tab:\▸\-
 " 行末の1文字先までカーソルを移動できるように
 set virtualedit=onemore
-" 記号表記で崩れないように
+" 記号表記で崩れないようにする
 set ambiwidth=double
+
 
 " undo 永続化
 silent !mkdir ~/.vim/undo -p >/dev/null 2>&1
@@ -202,13 +232,13 @@ endif
 
 " 補完
 inoremap ( ()<LEFT>
-inoremap " ""<LEFT>
+" inoremap " ""<LEFT>
 inoremap ' ''<LEFT>
 inoremap [ []<LEFT>
 inoremap { {}<LEFT>
 inoremap { {}<LEFT>
 inoremap < <><LEFT>
-" インデント
+
 inoremap {<Enter> {}<Left><CR><CR><BS><Up><Right>
 
 " To use fzf in Vim, add the following line to your .vimrc:
@@ -219,13 +249,12 @@ set rtp+=/usr/local/opt/fzf
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    \ >/dev/null 2>&1
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 " auto install plugin
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
   \| PlugInstall --sync | source $MYVIMRC
-\| endif
+
 
 call plug#begin('~/.vim/plugged')
 
@@ -237,23 +266,26 @@ Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
+" Ctrl + p でファイル・バッファをあいまい検索
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jmcantrell/vim-virtualenv'
-
-" theme screenshots
-" https://github.com/vim-airline/vim-airline/wiki/Screenshots
+" 通常モードでgcc, Visualモードでgcでコメントアウト
+Plug 'tomtom/tcomment_vim'
 
 " theme setting
 set t_Co=256 " この設定がないと色が正しく表示されない場合がある
 " let g:airline_powerline_fonts = 1
 let g:airline_theme = 'luna'   " テーマ指定
+" 他テーマを指定したい場合には以下を参考にお好みのものを指定
+" https://github.com/vim-airline/vim-airline/wiki/Screenshots
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1 " タブラインを表示
 set ttimeoutlen=50 " モード変更遅延解消
 
+" Ctrl + e でエクスプローラー表示
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
-" タブの切り替えショートカット設定
+" Ctrl + b Ctrl + n でタブ移動
 nmap <C-b> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 
