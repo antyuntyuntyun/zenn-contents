@@ -73,6 +73,7 @@ endif
 ### プラグイン設定
 
 `call plug#begin('~/.vim/plugged')`から`call plug#end()`の間にプラグイン設定を記述します。
+パッとみてショートカット設定を思い出せるようにコメントを簡単に書いておきます。
 
 ```vim
 call plug#begin('~/.vim/plugged')
@@ -88,27 +89,36 @@ Plug 'mhinz/vim-signify'
 " Ctrl + p でファイル・バッファをあいまい検索
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'jmcantrell/vim-virtualenv'
+" (caw.vimに移行したので利用していない)通常モードでgcc, Visualモードでgcでコメントアウト
+" Plug 'tomtom/tcomment_vim'
+Plug 'tyru/caw.vim'
 
-" theme setting
-set t_Co=256 " この設定がないと色が正しく表示されない場合がある
+" Ctrl + e でエクスプローラー表示
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" Ctrl + b Ctrl + n でタブ移動(pはctrlp.vimに譲る)
+nmap <C-b> <Plug>AirlineSelectPrevTab
+nmap <C-n> <Plug>AirlineSelectNextTab
+" Ctr + K でコメントアウト
+nmap <C-k> <plug>(caw:i:toggle)
+vmap <C-k> <plug>(caw:i:toggle)
+" gaでEA起動(e.g. =で揃える場合はga=)
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+set ttimeoutlen=50 " モード変更遅延解消
+
+" Airline setting
 " let g:airline_powerline_fonts = 1
 let g:airline_theme = 'luna'   " テーマ指定
 " 他テーマを指定したい場合には以下を参考にお好みのものを指定
 " https://github.com/vim-airline/vim-airline/wiki/Screenshots
+
+set t_Co=256 " この設定がないと色が正しく表示されない場合がある
 let g:airline#extensions#hunks#enabled = 0
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1 " タブラインを表示
-set ttimeoutlen=50 " モード変更遅延解消
-
-" Ctrl + e でエクスプローラー表示
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
-" Ctrl + b Ctrl + n でタブ移動
-nmap <C-b> <Plug>AirlineSelectPrevTab
-nmap <C-n> <Plug>AirlineSelectNextTab
-
 let g:airline#extensions#tabline#buffer_idx_mode = 1 " タブ番号表示
 
-" symbol
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
