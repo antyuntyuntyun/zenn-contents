@@ -148,7 +148,7 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 Powerline 用のフォントの設定は面倒なのでやっていません。
 Nerd Fonts 等をいれてイケてるアイコンを表示するのを実現しようとすると、
-利用しているデバイスそれぞれでフォントのインストールや端末利用フォント設定をしなければいけないので、OS は Windows/Mac/Linux 、エディタは vim/Sublime Text/VScode を行き来する自分としては面倒でモチベーションあがらずといところでした。
+利用しているデバイスそれぞれでフォントのインストールや端末利用フォント設定をしなければいけないので、OS は Windows/Mac/Linux 、エディタは vim/Sublime Text/VScode を行き来する自分としては面倒でモチベーションあがらずというところでした。
 `~/.vimrc`だけで実現できるならやってみたくありますが、難しそうなのでパスしました。
 
 ### ~/.vimrc
