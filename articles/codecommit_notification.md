@@ -306,6 +306,7 @@ def get_message(message: dict) -> (str, list, dict):
         # link
         url_list = re.findall(https_pattern, message['detail']['notificationBody'])
         url = url_list[0]
+        url = url[:-1] if url[-1] == '.' else url
         link = {
             'icon_url': 'https://img.icons8.com/external-flatart-icons-outline-flatarticons/64/000000/external-comment-chat-flatart-icons-outline-flatarticons-2.png',
             'name': 'PullRequest',
@@ -333,6 +334,7 @@ def get_message(message: dict) -> (str, list, dict):
             # link
             url_list = re.findall(https_pattern, message['detail']['notificationBody'])
             url = url_list[0]
+            url = url[:-1] if url[-1] == '.' else url
             link = {
                 'icon_url': 'https://cdn-icons-png.flaticon.com/512/3659/3659866.png',
                 'name': 'PullRequest',
@@ -355,6 +357,7 @@ def get_message(message: dict) -> (str, list, dict):
             # link
             url_list = re.findall(https_pattern, message['detail']['notificationBody'])
             url = url_list[0]
+            url = url[:-1] if url[-1] == '.' else url
             link = {
                 'icon_url': 'https://cdn0.iconfinder.com/data/icons/octicons/1024/git-pull-request-512.png',
                 'name': 'PullRequest',
@@ -370,6 +373,7 @@ def get_message(message: dict) -> (str, list, dict):
         # link
         url_list = re.findall(https_pattern, message['detail']['notificationBody'])
         url = url_list[0]
+        url = url[:-1] if url[-1] == '.' else url
         link = {
             'icon_url': 'https://cdn-icons.flaticon.com/png/512/2076/premium/2076218.png?token=exp=1635696056~hmac=6f323fa1adc2e6d6de8d2b961c96984b',
             'name': 'PullRequest',
