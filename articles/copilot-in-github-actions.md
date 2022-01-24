@@ -61,6 +61,7 @@ copilot が作成した IAM ロールの中で、`{app}-{env}-EnvManagerRole`と
 
 #### GitHub レポジトリの secrets として設定
 
+作成した IAM ID プロバイダーの arn を GitHub secrets に登録し、GitHub Action から環境変数として参照できるようにする。
 GitHubActions を設定したいレポジトリに web で行き,Settings から Repository secrets に登録
 今回は `COPILOT_DEPLOY_IAM_ROLE_ARN` という名前で登録。
 
