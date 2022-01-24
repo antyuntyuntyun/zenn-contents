@@ -18,7 +18,7 @@ https://aws.amazon.com/jp/blogs/news/introducing-aws-copilot/
 - {}で囲んでいるところは自身の環境に沿って適宜読み替える
 - copilot の ScheduledJobs が対象
   - 他のコンテナアプリケーションは動作未確認
-- copilot deploy が既にローカル端末等で実行されており、デプロイしたい環境用の IAM ロールが作成されている
+- copilot deploy が既にローカル端末等で実行されて環境が作成されており、デプロイしたい環境用の IAM ロールが作成されている
   - copilot のアプリケーションおよび環境ごとに作成される管理ロール
   - {app}-{env}-EnvManagerRole
 
@@ -33,8 +33,9 @@ https://dev.classmethod.jp/articles/create-iam-id-provider-for-github-actions-wi
 
 #### copilot 管理ロールの AssumeRole ポリシー
 
-既に`copilot deploy`が実施されて成功していると、いくつかロールが作成されている。
-その中で、デプロイ対象を管理しているロールに AssumeRole できるようなポリシーを作成する必要がある。
+前提条件で書いた通り、既に`copilot deploy`が実行されて環境作成が成功していると、いくつか IAM ロールが作成されている。
+copilot が作成した IAM ロールの中で、`{app}-{env}-EnvManagerRole`という名前の環境管理用ロールが必要になる。
+前章で作成したロールに上記環境管理用ロールを AssumeRole できるようなポリシーを作成する必要がある。
 以下で作成する。名前は `AssumeRole-{app}-{env}-EnvManagerRole`とでもしておく。
 
 ```
