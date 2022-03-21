@@ -171,9 +171,7 @@ services:
   // "context": "..",
   // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
   // "dockerFile": "../Dockerfile",
-  "dockerComposeFile": [
-    "../docker-compose.yml"
-  ],
+  "dockerComposeFile": ["../docker-compose.yml"],
   "service": "frontend",
   "workspaceFolder": "/frontend",
   "shutdownAction": "stopCompose",
@@ -209,7 +207,7 @@ services:
     },
     "[markdown]": {
       "editor.tabSize": 4,
-      "editor.formatOnSave": true,
+      "editor.formatOnSave": true
     },
     "markdown-preview-enhanced.enableExtendedTableSyntax": true,
     "markdown-preview-enhanced.enableScriptExecution": true,
@@ -248,7 +246,7 @@ services:
       "ecmel.vscode-html-css",
       "ormulahendry.auto-close-tag",
       "formulahendry.auto-rename-tag",
-      "zignd.html-css-class-completion",
+      "zignd.html-css-class-completion"
     ],
     "postAttachCommand": "yarn install && yarn start"
     // Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -260,6 +258,7 @@ services:
     // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
     // "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
   }
+}
 ```
 
 ## 諦めたこと
@@ -277,3 +276,115 @@ Dockerfile で CMD や ENTORYPOINT で起動すると、コンテナが閉じて
 ## 最後に
 
 本日はここまで。とりあえず開発環境設定はできた気がするので、アプリ開発に進みます。
+
+## 追記：　コンテナの VScode 拡張機能が正常にインストールされない
+
+よく見ると拡張機能が正常に機能しておらず、以下のようなメッセージが出ていた。
+`This extension is disabled in this workspace because it is defined to run in the Remote Extension Host. vscode remote container`
+
+下記リファレンスをみると、ローカルとリモートで競合がある場合には拡張機能が正常にインストールされないそうで、常にインストールしたい場合は異なるオプション指定が必要らしい.
+
+https://code.visualstudio.com/docs/remote/containers
+
+`"extensinos": []`ではなく`"remote.containers.defaultExtensions": []`で指定することで解決した。
+
+### 修正した.devcontainer.json
+
+```json
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/v0.194.0/containers/docker-existing-dockerfile
+{
+  "name": "ReactContainer",
+  // Sets the run context to one level up instead of the .devcontainer folder.
+  // "context": "..",
+  // Update the 'dockerFile' property if you aren't using the standard 'Dockerfile' filename.
+  // "dockerFile": "../Dockerfile",
+  "dockerComposeFile": ["../docker-compose.yml"],
+  "service": "frontend",
+  "workspaceFolder": "/frontend",
+  "shutdownAction": "stopCompose",
+  // Uncomment to connect as a non-root user if you've added one. See https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "developer",
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "files.eol": "\n",
+    "editor.guides.bracketPairs": true,
+    "editor.bracketPairColorization.enabled": true,
+    "terminal.integrated.profiles.linux": {
+      "bash": {
+        "path": "/bin/bash"
+      }
+    },
+    "[javascript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "[json]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "[typescript]": {
+      "editor.defaultFormatter": "esbenp.prettier-vscode",
+      "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+      }
+    },
+    "[markdown]": {
+      "editor.tabSize": 4,
+      "editor.formatOnSave": true
+    },
+    "markdown-preview-enhanced.enableExtendedTableSyntax": true,
+    "markdown-preview-enhanced.enableScriptExecution": true,
+    "markdown-preview-enhanced.previewTheme": "github-light.css",
+    "markdown.preview.breaks": true,
+    "markdown.extension.orderedList.marker": "one",
+    "markdown.extension.orderedList.autoRenumber": false,
+    "markdown.extension.syntax.decorations": false,
+    "markdown.extension.tableFormatter.enabled": false,
+    // Add the IDs of extensions you want installed when the container is created.
+    "remote.containers.defaultExtensions": [
+      // base
+      "vincaslt.highlight-matching-tag",
+      "donjayamanne.githistory",
+      "eamodio.gitlens",
+      "mhutchie.git-graph",
+      "gruntfuggly.todo-tree",
+      "github.vscode-pull-request-github",
+      "mutantdino.resourcemonitor",
+      "wmaurer.change-case",
+      "editorconfig.editorconfig",
+      "mosapride.zenkaku",
+      "davidanson.vscode-markdownlint",
+      "VisualStudioExptTeam.vscodeintellicode",
+      "ms-azuretools.vscode-docker",
+      "redhat.vscode-yaml",
+      "christian-kohler.path-intellisense",
+      "esbenp.prettier-vscode",
+      "pkief.material-icon-theme",
+      "esbenp.prettier-vscode",
+      "mutantdino.resourcemonitor",
+      // front
+      "dsznajder.es7-react-js-snippets",
+      "dbaeumer.vscode-eslint",
+      "christian-kohler.npm-intellisense",
+      "ecmel.vscode-html-css",
+      "ormulahendry.auto-close-tag",
+      "formulahendry.auto-rename-tag",
+      "zignd.html-css-class-completion"
+    ],
+    "postAttachCommand": "yarn install && yarn start"
+    // Use 'forwardPorts' to make a list of ports inside the container available locally.
+    // "forwardPorts": [],
+    // Uncomment the next line to run commands after the container is created - for example installing curl.
+    // "postCreateCommand": "apt-get update && apt-get install -y curl",
+    // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+    // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+    // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+    // "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+  }
+}
+```
