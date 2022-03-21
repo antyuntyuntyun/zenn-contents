@@ -388,3 +388,11 @@ https://code.visualstudio.com/docs/remote/containers
   }
 }
 ```
+
+## 追記: Prettier が勝手にシングルクォーてションをダブルクォーテーションにする
+
+setting.json に以下を追記して解決
+
+```json
+"prettier.singleQuote": true,
+```
