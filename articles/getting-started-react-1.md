@@ -187,7 +187,7 @@ services:
         "path": "/bin/bash"
       }
     },
-    "[javascript]": {
+    "[javascript][javascriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
@@ -199,7 +199,7 @@ services:
         "source.fixAll.eslint": true
       }
     },
-    "[typescript]": {
+    "[typescript][typescriptreact]": {
       "editor.defaultFormatter": "esbenp.prettier-vscode",
       "editor.codeActionsOnSave": {
         "source.fixAll.eslint": true
