@@ -20,7 +20,7 @@ https://github.com/antyuntyuntyun/react-template
 
 ## プロジェクト作成コマンド
 
-以下記事参照させていただきました。とりあえず `npx create-react-app react_app`といった形でプロジェクト作成コマンド使えば React 始められそう。
+以下記事参照させて頂きました。とりあえず `npx create-react-app react_app`といった形でプロジェクト作成コマンド使えば React 始められそう。
 
 https://zenn.dev/web_tips/articles/abad1a544f3643
 
