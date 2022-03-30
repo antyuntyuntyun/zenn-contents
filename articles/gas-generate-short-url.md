@@ -27,7 +27,7 @@ BITLY_URL = 'https://api-ssl.bitly.com/v4/shorten' // bitly api v4
 /**
  * 対象のスプレッドシートのアクティブシートに対して短縮URL生成処理を実行
  */
-function wirteshortenUrlAllSheet() {
+function wirteshortenUrlActiveSheet() {
   // アクティブシートの取得
   const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet()
 
@@ -38,7 +38,7 @@ function wirteshortenUrlAllSheet() {
     .filter(String)
   const length = value.length
   const shortenUrls = [] // 短縮URL格納用
-  for (var i = 0; i < length; i++) {
+  for (let i = 0; i < length; i++) {
     console.log(
       `sheetName: ${sheet.getName()} cell:${URL_COLUMN_CHAR}${
         FIRST_ROW + i
@@ -85,7 +85,7 @@ function wirteshortenUrlAllSheet() {
       .filter(String)
     const length = value.length
     const shortenUrls = [] // 短縮URL格納用
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
       console.log(
         `sheetName: ${sheet.getName()} cell:${URL_COLUMN_CHAR}${
           FIRST_ROW + i
