@@ -584,5 +584,5 @@ call plug#end()
 
 ```bash
 [ -e "~/.vimrc" ] && cp ~/.vimrc ~/.vimrc.bck
-curl -L https://gist.githubusercontent.com/antyuntyuntyun/fc092cf1e308459ec7bcec4542169a1e/raw/bd87ca7380a78d44723be59348fee9f7fc97f78a/.vimrc > ~/.vimrc
+curl -L https://gist.githubusercontent.com/antyuntyuntyun/fc092cf1e308459ec7bcec4542169a1e/raw/611e79baeb0ffc97beb6addb25ac90015454905c/.vimrc > ~/.vimrc
 ```
