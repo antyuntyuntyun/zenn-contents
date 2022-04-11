@@ -354,6 +354,10 @@ vim にハマりきってないのは、git 便利操作がなかなかうまく
 
 アドオンの追加等により普段ターミナルでしている git+fzf の作業を vim 上でできるように調整。
 
+## 追記(2022/4/10): lsp 追加
+
+lsp と auto-complete 追加
+
 ### .vimrc
 
 ```vim
@@ -388,7 +392,9 @@ vim にハマりきってないのは、git 便利操作がなかなかうまく
 " Ctrl + k    コメントアウト
 " vjj gcc     複数行をまとめてコメントアウト
 " ga =        EasyAlignを起動して、= でアライン
-
+" Lsp周り
+" :LspInstallServeri LspServerのインストール
+" :LspMangaServer    LaunguageServer一覧表示と管理
 
 
 " color
@@ -503,6 +509,12 @@ Plug 'tyru/caw.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'stsewd/fzf-checkout.vim'
+" lsp
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+" auto-complete
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
 
 " fzf-checkout.vim オプション
 " Sort branches/tags by committer date. Minus sign to show in reverse order (recent first):
