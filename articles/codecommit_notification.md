@@ -510,29 +510,6 @@ def get_message(message: dict) -> (str, list, dict):
                 'name': 'PullRequest',
                 'url': url
             }
-        # PR承認
-        elif message['detail']['approvalStatus'] == 'APPROVE':
-             # msg_title
-            msg_title_fixed = 'CodeCommit Pull Request Approved'
-            # detail
-            repo_name = message['detail']['repositoryNames'][0]
-            src_branch = message['detail']['sourceReference']
-            dst_branch = message['detail']['destinationReference']
-
-            detail = [
-                {'name':'repo_name', 'value':repo_name},
-                {'name':'src_branch', 'value':src_branch},
-                {'name':'dst_branch', 'value':dst_branch}
-            ]
-            # link
-            url_list = re.findall(https_pattern, message['detail']['notificationBody'])
-            url = url_list[0]
-            url = url[:-1] if url[-1] == '.' else url
-            link = {
-                'icon_url': 'https://cdn-icons-png.flaticon.com/512/1236/1236666.png',
-                'name': 'PullRequest',
-                'url': url
-            }
         # PRマージ
         elif message['detail']['isMerged'] == "True":
             # msg_title
@@ -558,6 +535,33 @@ def get_message(message: dict) -> (str, list, dict):
                 'name': 'PullRequest',
                 'url': url
             }
+        # PR承認
+        elif message['detail']['approvalStatus'] == 'APPROVE':
+             # msg_title
+            msg_title_fixed = 'CodeCommit Pull Request Approved'
+            # detail
+            repo_name = message['detail']['repositoryNames'][0]
+            src_branch = message['detail']['sourceReference']
+            dst_branch = message['detail']['destinationReference']
+            user_arn = message['detail']['callerUserArn']
+            user_name = user_arn.split('/')[1]
+
+            detail = [
+                {'name':'approver', 'value':user_name},
+                {'name':'repo_name', 'value':repo_name},
+                {'name':'src_branch', 'value':src_branch},
+                {'name':'dst_branch', 'value':dst_branch}
+            ]
+            # link
+            url_list = re.findall(https_pattern, message['detail']['notificationBody'])
+            url = url_list[0]
+            url = url[:-1] if url[-1] == '.' else url
+            link = {
+                'icon_url': 'https://cdn-icons-png.flaticon.com/512/1236/1236666.png',
+                'name': 'PullRequest',
+                'url': url
+            }
+
         else:
             # msg_title
             msg_title_fixed = msg_title
@@ -626,5 +630,6 @@ def post_teams(msg_title: str, detail: list, link: list) -> None:
         print(e)
     else:
         print(response.status_code)
+
 
 ```
