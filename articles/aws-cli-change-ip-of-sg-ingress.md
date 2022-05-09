@@ -82,7 +82,7 @@ do
     fi
     # 新規IPを許可
     IpPermissions="IpProtocol=${protocol},FromPort=${port},ToPort=${port},IpRanges=[{CidrIp=${NewMyIp},Description=${SgMyDescription}}]"
-    echo "try to authorize old-ip (protocol:${protocol} port:${port}) ..."
+    echo "try to authorize new-ip (protocol:${protocol} port:${port}) ..."
     result=$(aws ec2 authorize-security-group-ingress --group-id ${SgGroupID} --ip-permissions ${IpPermissions})
     result_status=$(echo $result | jq -r '.Return')
     if [ result_status="true" ]; then
