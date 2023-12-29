@@ -2,7 +2,7 @@
 title: 'LLM速習ログ'
 emoji: '🤗'
 type: 'tech' # tech: 技術記事 / idea: アイデア
-topics: []
+topics: ['python', 'nlp', 'llm', 'transformer', 'huggingface']
 published: true
 ---
 
