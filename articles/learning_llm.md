@@ -15,7 +15,7 @@ published: true
 NTT データさんの記事。概要理解のための資料としてとてもわかりやすいです。
 https://speakerdeck.com/kyoun/llm-introduction-ses2023
 
-tty さんの連載記事。実装例も掲載されており、とてもわかりやすいです。
+ttya さんの連載記事。実装例も掲載されており、とてもわかりやすいです。
 https://zenn.dev/ttya16/articles/ce89dcab833d32cadb39#fn-b532-1
 
 ## 感情分類のお試し実装
